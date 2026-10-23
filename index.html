@@ -6,7 +6,7 @@
   <title>Infographic Gamer | Game Lore & Technical Blueprints</title>
   <meta name="description" content="Official links, free 4K gaming wallpapers, and archival infographic prints for @infographic_gamer.">
   <meta property="og:title" content="Infographic Gamer | Links">
-  <meta property="og:description" content="Visualizing Game Lore, Weapons & Maps in High-Tech HUD Infographics.">
+  <meta property="og:description" content="High-tech visual breakdowns of weapons, armor, lore & world maps.">
   <meta property="og:image" content="avatar.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,6 @@
       align-items: center;
     }
 
-    /* Header Profile */
     .avatar-wrapper {
       position: relative;
       width: 108px;
@@ -128,7 +127,6 @@
       font-weight: 600;
     }
 
-    /* Links Section */
     .links-group {
       width: 100%;
       display: flex;
@@ -224,7 +222,7 @@
       transform: translateX(4px);
     }
 
-    /* Showcase Section */
+    /* Featured Showcase */
     .showcase {
       width: 100%;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -243,21 +241,22 @@
     }
 
     .preview-card {
-      background: rgba(18, 24, 38, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 24, 38, 0.6);
+      border: 1px solid rgba(0, 229, 255, 0.25);
       border-radius: 12px;
-      padding: 12px;
+      padding: 14px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
+      margin-bottom: 20px;
     }
 
     .preview-card img {
-      width: 72px;
-      height: 90px;
+      width: 80px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 229, 255, 0.4);
     }
 
     .preview-info {
@@ -275,8 +274,10 @@
 
     .preview-name {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
-      margin-bottom: 4px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
     }
 
     .preview-cta {
@@ -287,7 +288,48 @@
       font-weight: 600;
     }
 
-    /* Footer */
+    /* Archive Grid */
+    .archive-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .archive-item {
+      background: rgba(18, 24, 38, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .archive-item img {
+      width: 44px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .archive-info {
+      flex: 1;
+    }
+
+    .archive-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e6edf3;
+      margin-bottom: 2px;
+    }
+
+    .archive-link {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
     footer {
       margin-top: 40px;
       font-size: 0.82rem;
@@ -300,7 +342,6 @@
 <body>
   <div class="container">
     
-    <!-- Profile Header -->
     <div class="avatar-wrapper">
       <div class="avatar-ring"></div>
       <img src="avatar.jpg" alt="Infographic Gamer Avatar" class="avatar">
@@ -310,14 +351,13 @@
     <h1>@infographic_gamer</h1>
     <p class="bio">High-tech visual breakdowns of weapons, armor, lore & world maps. <span>Zelda • Elden Ring • Cyberpunk • Halo</span></p>
 
-    <!-- Monetization & Bio Links -->
     <div class="links-group">
 
       <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="link-card highlight">
-        <div class="card-icon">⚔️</div>
+        <div class="card-icon">⚡</div>
         <div class="card-content">
-          <div class="card-title">Latest Breakdown: Zelda Master Sword</div>
-          <div class="card-desc">Swipe through 4:5 technical carousel post</div>
+          <div class="card-title">Latest: The Legend of Zelda: Tears of the Kingdom</div>
+          <div class="card-desc">Swipe through 4:5 technical carousel on Instagram</div>
         </div>
         <div class="card-arrow">→</div>
       </a>
@@ -360,20 +400,30 @@
 
     </div>
 
-    <!-- Latest Showcase Preview -->
     <div class="showcase">
-      <div class="showcase-title">Featured Lore Breakdown</div>
+      <div class="showcase-title">Featured Breakdown</div>
       <div class="preview-card">
-        <img src="assets/zelda_preview.jpg" alt="Zelda Master Sword Infographic">
+        <img src="assets/the_legend_of_zelda__tea_preview.jpg" alt="The Legend of Zelda: Tears of the Kingdom">
         <div class="preview-info">
-          <div class="preview-tag">NOW ON INSTAGRAM</div>
-          <div class="preview-name">The Legend of Zelda Schematic</div>
+          <div class="preview-tag">NOW LIVE ON INSTAGRAM</div>
+          <div class="preview-name">The Legend of Zelda: Tears of the Kingdom</div>
           <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="preview-cta">View Full Carousel Post →</a>
         </div>
       </div>
+
+      <div class="showcase-title" style="margin-top: 24px;">Recent Breakdowns Archive</div>
+      <div class="archive-grid">
+        
+      <div class="archive-item">
+        <img src="assets/zelda_preview.jpg" alt="The Legend of Zelda Franchise">
+        <div class="archive-info">
+          <div class="archive-title">The Legend of Zelda Franchise</div>
+          <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+        </div>
+      </div>
+      </div>
     </div>
 
-    <!-- Footer -->
     <footer>
       © 2026 Infographic Gamer. Editorial tributes & schematics.<br>
       All game rights belong to their respective publishers.
