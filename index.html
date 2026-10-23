@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infographic Gamer | Game Lore & Technical Blueprints</title>
+  <meta name="description" content="Official links, free 4K gaming wallpapers, and archival infographic prints for @infographic_gamer.">
+  <meta property="og:title" content="Infographic Gamer | Links">
+  <meta property="og:description" content="Visualizing Game Lore, Weapons & Maps in High-Tech HUD Infographics.">
+  <meta property="og:image" content="avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090c10;
+      --card-bg: rgba(18, 24, 38, 0.75);
+      --card-border: rgba(0, 229, 255, 0.25);
+      --card-hover: rgba(0, 229, 255, 0.15);
+      --cyan: #00e5ff;
+      --gold: #ffb300;
+      --text: #f0f6fc;
+      --text-muted: #8b949e;
+      --glow: 0 0 20px rgba(0, 229, 255, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px 60px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header Profile */
+    .avatar-wrapper {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      margin-bottom: 18px;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--gold));
+      animation: rotateRing 8s linear infinite;
+      box-shadow: var(--glow);
+    }
+
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .avatar {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #090c10;
+      display: block;
+      background: #111;
+    }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--cyan);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-align: center;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, #ffffff, #c9d1d9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bio {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.4;
+      margin-bottom: 28px;
+    }
+
+    .bio span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Links Section */
+    .links-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--cyan);
+      opacity: 0.5;
+      transition: opacity 0.25s ease, width 0.25s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+      box-shadow: var(--glow);
+      background: var(--card-hover);
+    }
+
+    .link-card:hover::before {
+      opacity: 1;
+      width: 6px;
+    }
+
+    .link-card.highlight {
+      border-color: rgba(255, 179, 0, 0.45);
+      background: rgba(255, 179, 0, 0.08);
+    }
+
+    .link-card.highlight::before {
+      background: var(--gold);
+    }
+
+    .link-card.highlight:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(255, 179, 0, 0.35);
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .card-arrow {
+      color: var(--cyan);
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .link-card:hover .card-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Showcase Section */
+    .showcase {
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      margin-top: 10px;
+    }
+
+    .showcase-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .preview-card {
+      background: rgba(18, 24, 38, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .preview-card img {
+      width: 72px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+
+    .preview-info {
+      flex: 1;
+    }
+
+    .preview-tag {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .preview-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .preview-cta {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Profile Header -->
+    <div class="avatar-wrapper">
+      <div class="avatar-ring"></div>
+      <img src="avatar.jpg" alt="Infographic Gamer Avatar" class="avatar">
+    </div>
+
+    <div class="verified-badge">⚡ Video Game HUD Schematics</div>
+    <h1>@infographic_gamer</h1>
+    <p class="bio">High-tech visual breakdowns of weapons, armor, lore & world maps. <span>Zelda • Elden Ring • Cyberpunk • Halo</span></p>
+
+    <!-- Monetization & Bio Links -->
+    <div class="links-group">
+
+      <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="link-card highlight">
+        <div class="card-icon">⚔️</div>
+        <div class="card-content">
+          <div class="card-title">Latest Breakdown: Zelda Master Sword</div>
+          <div class="card-desc">Swipe through 4:5 technical carousel post</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://displate.com" target="_blank" rel="noopener noreferrer" class="link-card">
+        <div class="card-icon">🖼️</div>
+        <div class="card-content">
+          <div class="card-title">Archival Metal & Matte Prints</div>
+          <div class="card-desc">Physical wall art for your battlestation</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://www.humblebundle.com" target="_blank" rel="noopener noreferrer" class="link-card">
+        <div class="card-icon">🎮</div>
+        <div class="card-content">
+          <div class="card-title">Game Deals & Steam Key Bundles</div>
+          <div class="card-desc">Up to 80% off PC, Xbox, PlayStation titles</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://www.instagram.com/infographic_gamer/" target="_blank" rel="noopener noreferrer" class="link-card">
+        <div class="card-icon">📸</div>
+        <div class="card-content">
+          <div class="card-title">Official Instagram Profile</div>
+          <div class="card-desc">Follow @infographic_gamer for daily schematics</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="mailto:gpreetsingh2003@yahoo.co.uk?subject=Infographic%20Gamer%20Sponsorship%20Inquiry" class="link-card">
+        <div class="card-icon">📩</div>
+        <div class="card-content">
+          <div class="card-title">Business & Sponsorship Inquiries</div>
+          <div class="card-desc">Brand collaborations, game promotions & licensing</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </div>
+
+    <!-- Latest Showcase Preview -->
+    <div class="showcase">
+      <div class="showcase-title">Featured Lore Breakdown</div>
+      <div class="preview-card">
+        <img src="assets/zelda_preview.jpg" alt="Zelda Master Sword Infographic">
+        <div class="preview-info">
+          <div class="preview-tag">NOW ON INSTAGRAM</div>
+          <div class="preview-name">The Legend of Zelda Schematic</div>
+          <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="preview-cta">View Full Carousel Post →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 Infographic Gamer. Editorial tributes & schematics.<br>
+      All game rights belong to their respective publishers.
+    </footer>
+
+  </div>
+</body>
+</html>
