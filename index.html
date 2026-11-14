@@ -6,8 +6,8 @@
   <title>Infographic Gamer | Game Lore & Technical Blueprints</title>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4772299808073595" crossorigin="anonymous"></script>
-  <meta name="description" content="Official links, free 4K gaming wallpapers, and archival infographic prints for @infographic_gamer.">
-  <meta property="og:title" content="Infographic Gamer | Links">
+  <meta name="description" content="Official links, free 4K gaming wallpapers, community voting, and archival infographic metal prints for @infographic_gamer.">
+  <meta property="og:title" content="Infographic Gamer | Community Hub & Wallpapers">
   <meta property="og:description" content="High-tech visual breakdowns of weapons, armor, lore & world maps.">
   <meta property="og:image" content="avatar.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,14 +16,17 @@
   <style>
     :root {
       --bg: #090c10;
-      --card-bg: rgba(18, 24, 38, 0.75);
+      --card-bg: rgba(18, 24, 38, 0.78);
       --card-border: rgba(0, 229, 255, 0.25);
       --card-hover: rgba(0, 229, 255, 0.15);
       --cyan: #00e5ff;
       --gold: #ffb300;
+      --emerald: #00ffa3;
+      --purple: #b388ff;
       --text: #f0f6fc;
       --text-muted: #8b949e;
       --glow: 0 0 20px rgba(0, 229, 255, 0.35);
+      --glow-gold: 0 0 20px rgba(255, 179, 0, 0.35);
     }
 
     * {
@@ -35,7 +38,7 @@
     body {
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.14) 0%, transparent 60%),
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 32px 32px, 32px 32px;
@@ -45,7 +48,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 16px 60px;
+      padding: 36px 16px 60px;
     }
 
     .container {
@@ -93,12 +96,12 @@
       align-items: center;
       gap: 6px;
       background: rgba(0, 229, 255, 0.12);
-      border: 1px solid rgba(0, 229, 255, 0.3);
-      padding: 4px 12px;
+      border: 1px solid rgba(0, 229, 255, 0.35);
+      padding: 5px 14px;
       border-radius: 20px;
       font-size: 0.85rem;
       color: var(--cyan);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -117,11 +120,11 @@
     }
 
     .bio {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text-muted);
       text-align: center;
       line-height: 1.4;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .bio span {
@@ -129,12 +132,129 @@
       font-weight: 600;
     }
 
+    /* ─── COMMUNITY VOTING WIDGET ─── */
+    .vote-card {
+      width: 100%;
+      background: rgba(20, 28, 45, 0.85);
+      border: 1px solid rgba(0, 255, 163, 0.35);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 26px;
+      box-shadow: 0 0 25px rgba(0, 255, 163, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vote-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--emerald), var(--cyan));
+    }
+
+    .vote-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .vote-badge {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--emerald);
+      text-transform: uppercase;
+    }
+
+    .vote-total {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .vote-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .vote-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .vote-option {
+      background: rgba(10, 15, 24, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .vote-option:hover {
+      border-color: var(--emerald);
+      background: rgba(0, 255, 163, 0.08);
+    }
+
+    .vote-option.voted {
+      border-color: var(--emerald);
+      box-shadow: 0 0 10px rgba(0, 255, 163, 0.3);
+    }
+
+    .vote-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 255, 163, 0.18);
+      width: 0%;
+      transition: width 0.5s ease;
+      z-index: 1;
+    }
+
+    .vote-option-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .vote-percent {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.82rem;
+      color: var(--emerald);
+      margin-left: 8px;
+    }
+
+    .vote-feedback {
+      display: none;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--emerald);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* ─── MONETIZATION LINKS GROUP ─── */
     .links-group {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .link-card {
@@ -188,7 +308,35 @@
 
     .link-card.highlight:hover {
       border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(255, 179, 0, 0.35);
+      box-shadow: var(--glow-gold);
+    }
+
+    .link-card.patron {
+      border-color: rgba(179, 136, 255, 0.45);
+      background: rgba(179, 136, 255, 0.08);
+    }
+
+    .link-card.patron::before {
+      background: var(--purple);
+    }
+
+    .link-card.patron:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 20px rgba(179, 136, 255, 0.35);
+    }
+
+    .link-card.store {
+      border-color: rgba(0, 255, 163, 0.4);
+      background: rgba(0, 255, 163, 0.07);
+    }
+
+    .link-card.store::before {
+      background: var(--emerald);
+    }
+
+    .link-card.store:hover {
+      border-color: var(--emerald);
+      box-shadow: 0 0 20px rgba(0, 255, 163, 0.35);
     }
 
     .card-icon {
@@ -224,7 +372,7 @@
       transform: translateX(4px);
     }
 
-    /* Featured Showcase */
+    /* ─── SHOWCASE & ARCHIVE ─── */
     .showcase {
       width: 100%;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -243,14 +391,14 @@
     }
 
     .preview-card {
-      background: rgba(18, 24, 38, 0.6);
-      border: 1px solid rgba(0, 229, 255, 0.25);
+      background: rgba(18, 24, 38, 0.7);
+      border: 1px solid rgba(0, 229, 255, 0.3);
       border-radius: 12px;
       padding: 14px;
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 26px;
     }
 
     .preview-card img {
@@ -282,6 +430,12 @@
       color: #fff;
     }
 
+    .preview-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
     .preview-cta {
       display: inline-block;
       font-size: 0.85rem;
@@ -290,46 +444,146 @@
       font-weight: 600;
     }
 
+    .preview-download {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--emerald);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Search & Filter Bar */
+    .search-box {
+      width: 100%;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(18, 24, 38, 0.8);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 10px;
+      padding: 12px 16px 12px 42px;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cyan);
+      font-size: 1.1rem;
+    }
+
+    .archive-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+
+    .archive-count {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
     /* Archive Grid */
     .archive-grid {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-height: 800px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .archive-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+    .archive-grid::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+    .archive-grid::-webkit-scrollbar-thumb {
+      background: rgba(0, 229, 255, 0.3);
+      border-radius: 4px;
     }
 
     .archive-item {
-      background: rgba(18, 24, 38, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
+      background: rgba(18, 24, 38, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
       padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .archive-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(0, 229, 255, 0.4);
+      background: rgba(18, 24, 38, 0.7);
     }
 
     .archive-item img {
-      width: 44px;
-      height: 55px;
+      width: 48px;
+      height: 60px;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      flex-shrink: 0;
     }
 
     .archive-info {
       flex: 1;
+      overflow: hidden;
     }
 
     .archive-title {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #e6edf3;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .archive-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
     }
 
     .archive-link {
-      font-size: 0.8rem;
       color: var(--cyan);
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    .archive-download {
+      color: var(--emerald);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .sep {
+      color: var(--text-muted);
     }
 
     footer {
@@ -338,6 +592,7 @@
       color: var(--text-muted);
       text-align: center;
       letter-spacing: 0.5px;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -351,10 +606,52 @@
 
     <div class="verified-badge">⚡ Video Game HUD Schematics</div>
     <h1>@infographic_gamer</h1>
-    <p class="bio">High-tech visual breakdowns of weapons, armor, lore & world maps. <span>Zelda • Elden Ring • Cyberpunk • Halo</span></p>
+    <p class="bio">High-tech visual breakdowns of weapons, armor, lore & world maps. <span>Halo • Doom • GTA 6 • Elden Ring • Cyberpunk</span></p>
 
+    <!-- ─── COMMUNITY VOTING ENGINE ─── -->
+    <div class="vote-card" id="voteCard">
+      <div class="vote-header">
+        <span class="vote-badge">🗳️ COMMUNITY RADAR</span>
+        <span class="vote-total" id="voteTotal">1,482 Votes Cast</span>
+      </div>
+      <div class="vote-title">Vote for our Next Lore Blueprint Breakdown:</div>
+      <div class="vote-options">
+        <div class="vote-option" onclick="castVote(0)">
+          <div class="vote-bar" id="vbar0"></div>
+          <div class="vote-option-content">
+            <span>⚔️ Ghost of Tsushima: Sakai Armor & Katana</span>
+            <span class="vote-percent" id="vp0">34%</span>
+          </div>
+        </div>
+        <div class="vote-option" onclick="castVote(1)">
+          <div class="vote-bar" id="vbar1"></div>
+          <div class="vote-option-content">
+            <span>🦾 Cyberpunk: Sandevistan Overclocking</span>
+            <span class="vote-percent" id="vp1">29%</span>
+          </div>
+        </div>
+        <div class="vote-option" onclick="castVote(2)">
+          <div class="vote-bar" id="vbar2"></div>
+          <div class="vote-option-content">
+            <span>🌊 BioShock: Rapture Plasmids & Big Daddy</span>
+            <span class="vote-percent" id="vp2">21%</span>
+          </div>
+        </div>
+        <div class="vote-option" onclick="castVote(3)">
+          <div class="vote-bar" id="vbar3"></div>
+          <div class="vote-option-content">
+            <span>🚀 Dead Space: USG Ishimura RIG & Cutter</span>
+            <span class="vote-percent" id="vp3">16%</span>
+          </div>
+        </div>
+      </div>
+      <div class="vote-feedback" id="voteFeedback">✓ Vote recorded! Your choice is prioritizing the upcoming queue.</div>
+    </div>
+
+    <!-- ─── HIGH-CONVERTING MONETIZATION & VALUE LINKS ─── -->
     <div class="links-group">
 
+      <!-- Latest Post -->
       <a href="https://www.instagram.com/p/DftsBSfFApl/" target="_blank" rel="noopener noreferrer" class="link-card highlight">
         <div class="card-icon">⚡</div>
         <div class="card-content">
@@ -364,549 +661,1053 @@
         <div class="card-arrow">→</div>
       </a>
 
-      <a href="https://displate.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <!-- Official Displate Storefront -->
+      <a href="https://displate.com" target="_blank" rel="noopener noreferrer" class="link-card store">
         <div class="card-icon">🖼️</div>
         <div class="card-content">
-          <div class="card-title">Archival Metal & Matte Prints</div>
-          <div class="card-desc">Physical wall art for your battlestation</div>
+          <div class="card-title">Official Displate Metal Posters</div>
+          <div class="card-desc">Museum-grade magnetic metal blueprint wall art (20% off)</div>
         </div>
         <div class="card-arrow">→</div>
       </a>
 
-      <a href="https://www.humblebundle.com" target="_blank" rel="noopener noreferrer" class="link-card">
+      <!-- Free 4K Wallpaper Vault Anchor -->
+      <a href="#wallpaperVault" class="link-card" onclick="document.getElementById('wallpaperVault').scrollIntoView({behavior:'smooth'}); return false;">
+        <div class="card-icon">💾</div>
+        <div class="card-content">
+          <div class="card-title">Free 4K Wallpaper Vault (69+ Titles)</div>
+          <div class="card-desc">Download uncompressed 9:16 mobile & desktop schematics</div>
+        </div>
+        <div class="card-arrow">↓</div>
+      </a>
+
+      <!-- VIP Archival Patron / Ko-fi -->
+      <a href="https://ko-fi.com" target="_blank" rel="noopener noreferrer" class="link-card patron">
+        <div class="card-icon">☕</div>
+        <div class="card-content">
+          <div class="card-title">VIP Patron & Custom Blueprint Requests</div>
+          <div class="card-desc">Support independent game lore research & sponsor blueprints</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <!-- Steam & PC Game Deals -->
+      <a href="https://www.humblebundle.com/store" target="_blank" rel="noopener noreferrer" class="link-card">
         <div class="card-icon">🎮</div>
         <div class="card-content">
-          <div class="card-title">Game Deals & Steam Key Bundles</div>
-          <div class="card-desc">Up to 80% off PC, Xbox, PlayStation titles</div>
+          <div class="card-title">Steam & Console Game Deals</div>
+          <div class="card-desc">Up to 85% off featured titles (Bethesda, FromSoft, CDPR)</div>
         </div>
         <div class="card-arrow">→</div>
       </a>
 
+      <!-- Official Instagram Profile -->
       <a href="https://www.instagram.com/infographic_gamer/" target="_blank" rel="noopener noreferrer" class="link-card">
         <div class="card-icon">📸</div>
         <div class="card-content">
           <div class="card-title">Official Instagram Profile</div>
-          <div class="card-desc">Follow @infographic_gamer for daily schematics</div>
+          <div class="card-desc">Follow @infographic_gamer for daily carousels & daily reels</div>
         </div>
         <div class="card-arrow">→</div>
       </a>
 
+      <!-- Sponsorship -->
       <a href="mailto:gpreetsingh2003@yahoo.co.uk?subject=Infographic%20Gamer%20Sponsorship%20Inquiry" class="link-card">
         <div class="card-icon">📩</div>
         <div class="card-content">
-          <div class="card-title">Business & Sponsorship Inquiries</div>
-          <div class="card-desc">Brand collaborations, game promotions & licensing</div>
+          <div class="card-title">Brand Sponsorships & Licensing</div>
+          <div class="card-desc">Editorial game promotions, sponsor integrations & collaborations</div>
         </div>
         <div class="card-arrow">→</div>
       </a>
 
     </div>
 
-    <div class="showcase">
-      <div class="showcase-title">Featured Breakdown</div>
+    <!-- ─── FEATURED BLUEPRINT SHOWCASE ─── -->
+    <div class="showcase" id="wallpaperVault">
+      <div class="showcase-title">Featured Blueprint</div>
       <div class="preview-card">
-        <img src="assets/master_chief_vs_doom_sla_preview.jpg" alt="Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison">
+        <a href="assets/master_chief_vs_doom_sla_preview.jpg" target="_blank" rel="noopener noreferrer">
+          <img src="assets/master_chief_vs_doom_sla_preview.jpg" alt="Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison">
+        </a>
         <div class="preview-info">
           <div class="preview-tag">NOW LIVE ON INSTAGRAM</div>
           <div class="preview-name">Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison</div>
-          <a href="https://www.instagram.com/p/DftsBSfFApl/" target="_blank" rel="noopener noreferrer" class="preview-cta">View Full Carousel Post →</a>
+          <div class="preview-actions">
+            <a href="https://www.instagram.com/p/DftsBSfFApl/" target="_blank" rel="noopener noreferrer" class="preview-cta">View Post →</a>
+            <span class="sep">•</span>
+            <a href="assets/master_chief_vs_doom_sla_preview.jpg" download class="preview-download">Download 4K ↓</a>
+          </div>
         </div>
       </div>
 
-      <div class="showcase-title" style="margin-top: 24px;">Recent Breakdowns Archive</div>
-      <div class="archive-grid">
+      <!-- ─── SEARCHABLE 4K ARCHIVE ─── -->
+      <div class="archive-header">
+        <div class="showcase-title" style="margin-bottom: 0;">4K Wallpaper Archive</div>
+        <div class="archive-count"><span id="matchCount">69</span> blueprints available</div>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="archiveSearch" class="search-input" placeholder="Search 69+ game blueprints (Halo, GTA, Elden Ring)..." oninput="filterArchive()">
+      </div>
+
+      <div class="archive-grid" id="archiveGrid">
         
-      <div class="archive-item">
-        <img src="assets/master_chief_vs_doom_sla_preview.jpg" alt="Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison">
+      <div class="archive-item" data-title="master chief vs doom slayer: ultimate super-soldier tactical comparison">
+        <a href="assets/master_chief_vs_doom_sla_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/master_chief_vs_doom_sla_preview.jpg" alt="Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Master Chief vs Doom Slayer: Ultimate Super-Soldier Tactical Comparison</div>
-          <a href="https://www.instagram.com/p/DftsBSfFApl/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DftsBSfFApl/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/master_chief_vs_doom_sla_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/marvel_s_spider_man___ad_preview.jpg" alt="Marvel's Spider-Man & Advanced Suit Web-Shooter Telemetry">
+      <div class="archive-item" data-title="marvel's spider-man & advanced suit web-shooter telemetry">
+        <a href="assets/marvel_s_spider_man___ad_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/marvel_s_spider_man___ad_preview.jpg" alt="Marvel's Spider-Man & Advanced Suit Web-Shooter Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Marvel's Spider-Man & Advanced Suit Web-Shooter Telemetry</div>
-          <a href="https://www.instagram.com/p/DftjM48lEXr/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DftjM48lEXr/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/marvel_s_spider_man___ad_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/batman__arkham_knight____preview.jpg" alt="Batman: Arkham Knight & Batsuit Mark VIII Schematics">
+      <div class="archive-item" data-title="batman: arkham knight & batsuit mark viii schematics">
+        <a href="assets/batman__arkham_knight____preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/batman__arkham_knight____preview.jpg" alt="Batman: Arkham Knight & Batsuit Mark VIII Schematics" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Batman: Arkham Knight & Batsuit Mark VIII Schematics</div>
-          <a href="https://www.instagram.com/p/DfsD73OlDNY/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfsD73OlDNY/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/batman__arkham_knight____preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/grand_theft_auto_vi___vi_preview.jpg" alt="Grand Theft Auto VI & Vice City Leonida Underworld Blueprints">
+      <div class="archive-item" data-title="grand theft auto vi & vice city leonida underworld blueprints">
+        <a href="assets/grand_theft_auto_vi___vi_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/grand_theft_auto_vi___vi_preview.jpg" alt="Grand Theft Auto VI & Vice City Leonida Underworld Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Grand Theft Auto VI & Vice City Leonida Underworld Blueprints</div>
-          <a href="https://www.instagram.com/p/DfsDL9yFFsr/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfsDL9yFFsr/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/grand_theft_auto_vi___vi_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/soma___pathos_ii_deep_oc_preview.jpg" alt="SOMA & PATHOS-II Deep Ocean Cybernetic Telemetry">
+      <div class="archive-item" data-title="soma & pathos-ii deep ocean cybernetic telemetry">
+        <a href="assets/soma___pathos_ii_deep_oc_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/soma___pathos_ii_deep_oc_preview.jpg" alt="SOMA & PATHOS-II Deep Ocean Cybernetic Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">SOMA & PATHOS-II Deep Ocean Cybernetic Telemetry</div>
-          <a href="https://www.instagram.com/p/DfrVgTelNjn/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfrVgTelNjn/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/soma___pathos_ii_deep_oc_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/death_stranding___bb_pod_preview.jpg" alt="Death Stranding & BB Pod Q-pid Telemetry">
+      <div class="archive-item" data-title="death stranding & bb pod q-pid telemetry">
+        <a href="assets/death_stranding___bb_pod_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/death_stranding___bb_pod_preview.jpg" alt="Death Stranding & BB Pod Q-pid Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Death Stranding & BB Pod Q-pid Telemetry</div>
-          <a href="https://www.instagram.com/p/DfqsN0JFNi6/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfqsN0JFNi6/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/death_stranding___bb_pod_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/persona_5___phantom_thie_preview.jpg" alt="Persona 5 & Phantom Thieves Metaverse Arcana">
+      <div class="archive-item" data-title="persona 5 & phantom thieves metaverse arcana">
+        <a href="assets/persona_5___phantom_thie_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/persona_5___phantom_thie_preview.jpg" alt="Persona 5 & Phantom Thieves Metaverse Arcana" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Persona 5 & Phantom Thieves Metaverse Arcana</div>
-          <a href="https://www.instagram.com/p/DfpO5atFJf2/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfpO5atFJf2/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/persona_5___phantom_thie_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/nier__automata___yorha_2_preview.jpg" alt="NieR: Automata & YoRHa 2B Combat Pod Telemetry">
+      <div class="archive-item" data-title="nier: automata & yorha 2b combat pod telemetry">
+        <a href="assets/nier__automata___yorha_2_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/nier__automata___yorha_2_preview.jpg" alt="NieR: Automata & YoRHa 2B Combat Pod Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">NieR: Automata & YoRHa 2B Combat Pod Telemetry</div>
-          <a href="https://www.instagram.com/p/DfolkHhFO6H/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfolkHhFO6H/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/nier__automata___yorha_2_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/armored_core_vi___coral__preview.jpg" alt="Armored Core VI & Coral Augmented AC Schematics">
+      <div class="archive-item" data-title="armored core vi & coral augmented ac schematics">
+        <a href="assets/armored_core_vi___coral__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/armored_core_vi___coral__preview.jpg" alt="Armored Core VI & Coral Augmented AC Schematics" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Armored Core VI & Coral Augmented AC Schematics</div>
-          <a href="https://www.instagram.com/p/DfnCIATko7y/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfnCIATko7y/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/armored_core_vi___coral__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/alan_wake___the_dark_pla_preview.jpg" alt="Alan Wake & The Dark Place Light Telemetry">
+      <div class="archive-item" data-title="alan wake & the dark place light telemetry">
+        <a href="assets/alan_wake___the_dark_pla_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/alan_wake___the_dark_pla_preview.jpg" alt="Alan Wake & The Dark Place Light Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Alan Wake & The Dark Place Light Telemetry</div>
-          <a href="https://www.instagram.com/p/DfmFGzvFH2z/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfmFGzvFH2z/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/alan_wake___the_dark_pla_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/control___federal_bureau_preview.jpg" alt="Control & Federal Bureau of Control Service Weapon">
+      <div class="archive-item" data-title="control & federal bureau of control service weapon">
+        <a href="assets/control___federal_bureau_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/control___federal_bureau_preview.jpg" alt="Control & Federal Bureau of Control Service Weapon" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Control & Federal Bureau of Control Service Weapon</div>
-          <a href="https://www.instagram.com/p/DflbvbbDWUj/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DflbvbbDWUj/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/control___federal_bureau_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/prey___talos_i_neuromod__preview.jpg" alt="Prey & Talos I Neuromod Typhon Telemetry">
+      <div class="archive-item" data-title="prey & talos i neuromod typhon telemetry">
+        <a href="assets/prey___talos_i_neuromod__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/prey___talos_i_neuromod__preview.jpg" alt="Prey & Talos I Neuromod Typhon Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Prey & Talos I Neuromod Typhon Telemetry</div>
-          <a href="https://www.instagram.com/p/DfkeT4DkmBv/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfkeT4DkmBv/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/prey___talos_i_neuromod__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/deus_ex___cybernetic_aug_preview.jpg" alt="Deus Ex & Cybernetic Augmentation Telemetry">
+      <div class="archive-item" data-title="deus ex & cybernetic augmentation telemetry">
+        <a href="assets/deus_ex___cybernetic_aug_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/deus_ex___cybernetic_aug_preview.jpg" alt="Deus Ex & Cybernetic Augmentation Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Deus Ex & Cybernetic Augmentation Telemetry</div>
-          <a href="https://www.instagram.com/p/Dfjlk11lC_g/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/Dfjlk11lC_g/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/deus_ex___cybernetic_aug_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/star_wars_jedi___cal_kes_preview.jpg" alt="Star Wars Jedi & Cal Kestis Lightsaber Architecture">
+      <div class="archive-item" data-title="star wars jedi & cal kestis lightsaber architecture">
+        <a href="assets/star_wars_jedi___cal_kes_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/star_wars_jedi___cal_kes_preview.jpg" alt="Star Wars Jedi & Cal Kestis Lightsaber Architecture" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Star Wars Jedi & Cal Kestis Lightsaber Architecture</div>
-          <a href="https://www.instagram.com/p/Dfi8R_zlARE/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/Dfi8R_zlARE/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/star_wars_jedi___cal_kes_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/titanfall_2___vanguard_c_preview.jpg" alt="Titanfall 2 & Vanguard-Class BT-7274 Titan Specs">
+      <div class="archive-item" data-title="titanfall 2 & vanguard-class bt-7274 titan specs">
+        <a href="assets/titanfall_2___vanguard_c_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/titanfall_2___vanguard_c_preview.jpg" alt="Titanfall 2 & Vanguard-Class BT-7274 Titan Specs" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Titanfall 2 & Vanguard-Class BT-7274 Titan Specs</div>
-          <a href="https://www.instagram.com/p/Dfhmr0_lHvh/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/Dfhmr0_lHvh/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/titanfall_2___vanguard_c_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/apex_legends___outlands__preview.jpg" alt="Apex Legends & Outlands Syndicate Telemetry">
+      <div class="archive-item" data-title="apex legends & outlands syndicate telemetry">
+        <a href="assets/apex_legends___outlands__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/apex_legends___outlands__preview.jpg" alt="Apex Legends & Outlands Syndicate Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Apex Legends & Outlands Syndicate Telemetry</div>
-          <a href="https://www.instagram.com/p/Dfg9ZXdFNkL/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/Dfg9ZXdFNkL/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/apex_legends___outlands__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/overwatch___omnic_crisis_preview.jpg" alt="Overwatch & Omnic Crisis Cybernetic Specs">
+      <div class="archive-item" data-title="overwatch & omnic crisis cybernetic specs">
+        <a href="assets/overwatch___omnic_crisis_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/overwatch___omnic_crisis_preview.jpg" alt="Overwatch & Omnic Crisis Cybernetic Specs" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Overwatch & Omnic Crisis Cybernetic Specs</div>
-          <a href="https://www.instagram.com/p/DfgUGlXFMgc/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfgUGlXFMgc/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/overwatch___omnic_crisis_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/dishonored___dunwall_voi_preview.jpg" alt="Dishonored & Dunwall Void Outsider Arcana">
+      <div class="archive-item" data-title="dishonored & dunwall void outsider arcana">
+        <a href="assets/dishonored___dunwall_voi_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/dishonored___dunwall_voi_preview.jpg" alt="Dishonored & Dunwall Void Outsider Arcana" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Dishonored & Dunwall Void Outsider Arcana</div>
-          <a href="https://www.instagram.com/p/DffYfL1E1Q8/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DffYfL1E1Q8/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/dishonored___dunwall_voi_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/dead_space___usg_ishimur_preview.jpg" alt="Dead Space & USG Ishimura Plasma Cutter Telemetry">
+      <div class="archive-item" data-title="dead space & usg ishimura plasma cutter telemetry">
+        <a href="assets/dead_space___usg_ishimur_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/dead_space___usg_ishimur_preview.jpg" alt="Dead Space & USG Ishimura Plasma Cutter Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Dead Space & USG Ishimura Plasma Cutter Telemetry</div>
-          <a href="https://www.instagram.com/p/DfevO7JlPQK/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfevO7JlPQK/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/dead_space___usg_ishimur_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/subnautica___planet_4546_preview.jpg" alt="Subnautica & Planet 4546B Deep Submersible Blueprints">
+      <div class="archive-item" data-title="subnautica & planet 4546b deep submersible blueprints">
+        <a href="assets/subnautica___planet_4546_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/subnautica___planet_4546_preview.jpg" alt="Subnautica & Planet 4546B Deep Submersible Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Subnautica & Planet 4546B Deep Submersible Blueprints</div>
-          <a href="https://www.instagram.com/p/DfcEbD4lFuY/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfcEbD4lFuY/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/subnautica___planet_4546_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/pokémon___poké_ball_capt_preview.jpg" alt="Pokémon & Poké Ball Capture Telemetry">
+      <div class="archive-item" data-title="pokémon & poké ball capture telemetry">
+        <a href="assets/pokémon___poké_ball_capt_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/pokémon___poké_ball_capt_preview.jpg" alt="Pokémon & Poké Ball Capture Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Pokémon & Poké Ball Capture Telemetry</div>
-          <a href="https://www.instagram.com/p/DfbbLQqFIn9/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfbbLQqFIn9/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/pokémon___poké_ball_capt_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/zelda__tears_of_the_king_preview.jpg" alt="Zelda: Tears of the Kingdom & Zonai Tech Telemetry">
+      <div class="archive-item" data-title="zelda: tears of the kingdom & zonai tech telemetry">
+        <a href="assets/zelda__tears_of_the_king_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/zelda__tears_of_the_king_preview.jpg" alt="Zelda: Tears of the Kingdom & Zonai Tech Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Zelda: Tears of the Kingdom & Zonai Tech Telemetry</div>
-          <a href="https://www.instagram.com/p/DfaCkiVFIo2/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfaCkiVFIo2/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/zelda__tears_of_the_king_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/team_fortress_2___sentry_preview.jpg" alt="Team Fortress 2 & Sentry Gun Level 3 Blueprints">
+      <div class="archive-item" data-title="team fortress 2 & sentry gun level 3 blueprints">
+        <a href="assets/team_fortress_2___sentry_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/team_fortress_2___sentry_preview.jpg" alt="Team Fortress 2 & Sentry Gun Level 3 Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Team Fortress 2 & Sentry Gun Level 3 Blueprints</div>
-          <a href="https://www.instagram.com/p/DfXa2N8kj-K/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfXa2N8kj-K/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/team_fortress_2___sentry_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/left_4_dead___green_flu__preview.jpg" alt="Left 4 Dead & Green Flu Infection Mutation Telemetry">
+      <div class="archive-item" data-title="left 4 dead & green flu infection mutation telemetry">
+        <a href="assets/left_4_dead___green_flu__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/left_4_dead___green_flu__preview.jpg" alt="Left 4 Dead & Green Flu Infection Mutation Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Left 4 Dead & Green Flu Infection Mutation Telemetry</div>
-          <a href="https://www.instagram.com/p/DfWxmIGlNzB/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfWxmIGlNzB/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/left_4_dead___green_flu__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/helldivers_2___super_ear_preview.jpg" alt="Helldivers 2 & Super Earth Orbital 500KG Stratagem Specs">
+      <div class="archive-item" data-title="helldivers 2 & super earth orbital 500kg stratagem specs">
+        <a href="assets/helldivers_2___super_ear_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/helldivers_2___super_ear_preview.jpg" alt="Helldivers 2 & Super Earth Orbital 500KG Stratagem Specs" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Helldivers 2 & Super Earth Orbital 500KG Stratagem Specs</div>
-          <a href="https://www.instagram.com/p/DfWIVEClDH3/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfWIVEClDH3/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/helldivers_2___super_ear_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/deep_rock_galactic___hox_preview.jpg" alt="Deep Rock Galactic & Hoxxes IV Mining Drill Specs">
+      <div class="archive-item" data-title="deep rock galactic & hoxxes iv mining drill specs">
+        <a href="assets/deep_rock_galactic___hox_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/deep_rock_galactic___hox_preview.jpg" alt="Deep Rock Galactic & Hoxxes IV Mining Drill Specs" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Deep Rock Galactic & Hoxxes IV Mining Drill Specs</div>
-          <a href="https://www.instagram.com/p/DfUflJPj1Oc/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfUflJPj1Oc/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/deep_rock_galactic___hox_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/warhammer_40k__darktide__preview.jpg" alt="Warhammer 40K: Darktide & Tertium Hive City Chainsword">
+      <div class="archive-item" data-title="warhammer 40k: darktide & tertium hive city chainsword">
+        <a href="assets/warhammer_40k__darktide__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/warhammer_40k__darktide__preview.jpg" alt="Warhammer 40K: Darktide & Tertium Hive City Chainsword" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Warhammer 40K: Darktide & Tertium Hive City Chainsword</div>
-          <a href="https://www.instagram.com/p/DfT2VLtjxs7/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfT2VLtjxs7/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/warhammer_40k__darktide__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/warhammer__vermintide____preview.jpg" alt="Warhammer: Vermintide & Skaven Under-Empire Telemetry">
+      <div class="archive-item" data-title="warhammer: vermintide & skaven under-empire telemetry">
+        <a href="assets/warhammer__vermintide____preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/warhammer__vermintide____preview.jpg" alt="Warhammer: Vermintide & Skaven Under-Empire Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Warhammer: Vermintide & Skaven Under-Empire Telemetry</div>
-          <a href="https://www.instagram.com/p/DfSGN8qFGv3/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfSGN8qFGv3/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/warhammer__vermintide____preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/space_marine___adeptus_a_preview.jpg" alt="Space Marine & Adeptus Astartes Bolter & Power Armor">
+      <div class="archive-item" data-title="space marine & adeptus astartes bolter & power armor">
+        <a href="assets/space_marine___adeptus_a_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/space_marine___adeptus_a_preview.jpg" alt="Space Marine & Adeptus Astartes Bolter & Power Armor" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Space Marine & Adeptus Astartes Bolter & Power Armor</div>
-          <a href="https://www.instagram.com/p/DfRc9uhlKSD/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfRc9uhlKSD/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/space_marine___adeptus_a_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/total_war__warhammer___e_preview.jpg" alt="Total War: Warhammer & Empire Steam Tank Telemetry">
+      <div class="archive-item" data-title="total war: warhammer & empire steam tank telemetry">
+        <a href="assets/total_war__warhammer___e_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/total_war__warhammer___e_preview.jpg" alt="Total War: Warhammer & Empire Steam Tank Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Total War: Warhammer & Empire Steam Tank Telemetry</div>
-          <a href="https://www.instagram.com/p/DfQzt_CFJA9/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfQzt_CFJA9/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/total_war__warhammer___e_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/age_of_empires_ii___treb_preview.jpg" alt="Age of Empires II & Trebuchet Siege Engine Schematics">
+      <div class="archive-item" data-title="age of empires ii & trebuchet siege engine schematics">
+        <a href="assets/age_of_empires_ii___treb_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/age_of_empires_ii___treb_preview.jpg" alt="Age of Empires II & Trebuchet Siege Engine Schematics" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Age of Empires II & Trebuchet Siege Engine Schematics</div>
-          <a href="https://www.instagram.com/p/DfQKeIQkwAR/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfQKeIQkwAR/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/age_of_empires_ii___treb_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/master_chief__complete_c_preview.jpg" alt="Master Chief: Complete Chronology & Arsenal">
+      <div class="archive-item" data-title="master chief: complete chronology & arsenal">
+        <a href="assets/master_chief__complete_c_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/master_chief__complete_c_preview.jpg" alt="Master Chief: Complete Chronology & Arsenal" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Master Chief: Complete Chronology & Arsenal</div>
-          <a href="https://www.instagram.com/p/DfP2E2mkmu_/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfP2E2mkmu_/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/master_chief__complete_c_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/sid_meier_s_civilization_preview.jpg" alt="Sid Meier's Civilization & Technology Tree Evolution">
+      <div class="archive-item" data-title="sid meier's civilization & technology tree evolution">
+        <a href="assets/sid_meier_s_civilization_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/sid_meier_s_civilization_preview.jpg" alt="Sid Meier's Civilization & Technology Tree Evolution" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Sid Meier's Civilization & Technology Tree Evolution</div>
-          <a href="https://www.instagram.com/p/DfPhN0uFMZa/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfPhN0uFMZa/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/sid_meier_s_civilization_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/stellaris___dyson_sphere_preview.jpg" alt="Stellaris & Dyson Sphere Megastructure Schematics">
+      <div class="archive-item" data-title="stellaris & dyson sphere megastructure schematics">
+        <a href="assets/stellaris___dyson_sphere_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/stellaris___dyson_sphere_preview.jpg" alt="Stellaris & Dyson Sphere Megastructure Schematics" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Stellaris & Dyson Sphere Megastructure Schematics</div>
-          <a href="https://www.instagram.com/p/DfO37whlNKc/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfO37whlNKc/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/stellaris___dyson_sphere_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/eve_online___titan_class_preview.jpg" alt="EVE Online & Titan-Class Avatar Doomsday Weaponry">
+      <div class="archive-item" data-title="eve online & titan-class avatar doomsday weaponry">
+        <a href="assets/eve_online___titan_class_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/eve_online___titan_class_preview.jpg" alt="EVE Online & Titan-Class Avatar Doomsday Weaponry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">EVE Online & Titan-Class Avatar Doomsday Weaponry</div>
-          <a href="https://www.instagram.com/p/DfOOrqQEgn3/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfOOrqQEgn3/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/eve_online___titan_class_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/super_mario___mushroom_k_preview.jpg" alt="Super Mario & Mushroom Kingdom Power-Up Telemetry">
+      <div class="archive-item" data-title="super mario & mushroom kingdom power-up telemetry">
+        <a href="assets/super_mario___mushroom_k_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/super_mario___mushroom_k_preview.jpg" alt="Super Mario & Mushroom Kingdom Power-Up Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Super Mario & Mushroom Kingdom Power-Up Telemetry</div>
-          <a href="https://www.instagram.com/p/DfNlb5GE-mf/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfNlb5GE-mf/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/super_mario___mushroom_k_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/24_legends_of_video_game_preview.jpg" alt="24 Legends of Video Games">
+      <div class="archive-item" data-title="24 legends of video games">
+        <a href="assets/24_legends_of_video_game_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/24_legends_of_video_game_preview.jpg" alt="24 Legends of Video Games" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">24 Legends of Video Games</div>
-          <a href="https://www.instagram.com/p/DfMgws6FMTA/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMgws6FMTA/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/24_legends_of_video_game_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/devil_may_cry___sparda_d_preview.jpg" alt="Devil May Cry & Sparda Demonic Weaponry">
+      <div class="archive-item" data-title="devil may cry & sparda demonic weaponry">
+        <a href="assets/devil_may_cry___sparda_d_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/devil_may_cry___sparda_d_preview.jpg" alt="Devil May Cry & Sparda Demonic Weaponry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Devil May Cry & Sparda Demonic Weaponry</div>
-          <a href="https://www.instagram.com/p/DfMWMHXFOKb/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMWMHXFOKb/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/devil_may_cry___sparda_d_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/borderlands___vault_hunt_preview.jpg" alt="Borderlands & Vault Hunter Arsenal Blueprints">
+      <div class="archive-item" data-title="borderlands & vault hunter arsenal blueprints">
+        <a href="assets/borderlands___vault_hunt_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/borderlands___vault_hunt_preview.jpg" alt="Borderlands & Vault Hunter Arsenal Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Borderlands & Vault Hunter Arsenal Blueprints</div>
-          <a href="https://www.instagram.com/p/DfMIZIUlK1o/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIZIUlK1o/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/borderlands___vault_hunt_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/monster_hunter___wyvern__preview.jpg" alt="Monster Hunter & Wyvern Arsenal Telemetry">
+      <div class="archive-item" data-title="monster hunter & wyvern arsenal telemetry">
+        <a href="assets/monster_hunter___wyvern__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/monster_hunter___wyvern__preview.jpg" alt="Monster Hunter & Wyvern Arsenal Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Monster Hunter & Wyvern Arsenal Telemetry</div>
-          <a href="https://www.instagram.com/p/DfMIU_cFPfE/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIU_cFPfE/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/monster_hunter___wyvern__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/grand_theft_auto___los_s_preview.jpg" alt="Grand Theft Auto & Los Santos Tactical Underworld Blueprints">
+      <div class="archive-item" data-title="grand theft auto & los santos tactical underworld blueprints">
+        <a href="assets/grand_theft_auto___los_s_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/grand_theft_auto___los_s_preview.jpg" alt="Grand Theft Auto & Los Santos Tactical Underworld Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Grand Theft Auto & Los Santos Tactical Underworld Blueprints</div>
-          <a href="https://www.instagram.com/p/DfMIQ1oFBzJ/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIQ1oFBzJ/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/grand_theft_auto___los_s_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/the_last_of_us___cordyce_preview.jpg" alt="The Last of Us & Cordyceps Pandemic Telemetry">
+      <div class="archive-item" data-title="the last of us & cordyceps pandemic telemetry">
+        <a href="assets/the_last_of_us___cordyce_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/the_last_of_us___cordyce_preview.jpg" alt="The Last of Us & Cordyceps Pandemic Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">The Last of Us & Cordyceps Pandemic Telemetry</div>
-          <a href="https://www.instagram.com/p/DfMIKS-FEmt/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIKS-FEmt/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/the_last_of_us___cordyce_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/sekiro__shadows_die_twic_preview.jpg" alt="Sekiro: Shadows Die Twice & Shinobi Prosthetic Telemetry">
+      <div class="archive-item" data-title="sekiro: shadows die twice & shinobi prosthetic telemetry">
+        <a href="assets/sekiro__shadows_die_twic_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/sekiro__shadows_die_twic_preview.jpg" alt="Sekiro: Shadows Die Twice & Shinobi Prosthetic Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Sekiro: Shadows Die Twice & Shinobi Prosthetic Telemetry</div>
-          <a href="https://www.instagram.com/p/DfMIGXcFMkr/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIGXcFMkr/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/sekiro__shadows_die_twic_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/destiny_2___the_traveler_preview.jpg" alt="Destiny 2 & The Traveler Telemetry">
+      <div class="archive-item" data-title="destiny 2 & the traveler telemetry">
+        <a href="assets/destiny_2___the_traveler_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/destiny_2___the_traveler_preview.jpg" alt="Destiny 2 & The Traveler Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Destiny 2 & The Traveler Telemetry</div>
-          <a href="https://www.instagram.com/p/DfMIBeFlM_D/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfMIBeFlM_D/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/destiny_2___the_traveler_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/horizon___machine_ecolog_preview.jpg" alt="Horizon & Machine Ecology Telemetry">
+      <div class="archive-item" data-title="horizon & machine ecology telemetry">
+        <a href="assets/horizon___machine_ecolog_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/horizon___machine_ecolog_preview.jpg" alt="Horizon & Machine Ecology Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Horizon & Machine Ecology Telemetry</div>
-          <a href="https://www.instagram.com/p/DfHyJg3FCUT/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfHyJg3FCUT/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/horizon___machine_ecolog_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/final_fantasy_vii___midg_preview.jpg" alt="Final Fantasy VII & Midgar Mako Telemetry">
+      <div class="archive-item" data-title="final fantasy vii & midgar mako telemetry">
+        <a href="assets/final_fantasy_vii___midg_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/final_fantasy_vii___midg_preview.jpg" alt="Final Fantasy VII & Midgar Mako Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Final Fantasy VII & Midgar Mako Telemetry</div>
-          <a href="https://www.instagram.com/p/DfHI5rNFFeB/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfHI5rNFFeB/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/final_fantasy_vii___midg_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/ghost_of_tsushima___saka_preview.jpg" alt="Ghost of Tsushima & Sakai Clan Telemetry">
+      <div class="archive-item" data-title="ghost of tsushima & sakai clan telemetry">
+        <a href="assets/ghost_of_tsushima___saka_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/ghost_of_tsushima___saka_preview.jpg" alt="Ghost of Tsushima & Sakai Clan Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Ghost of Tsushima & Sakai Clan Telemetry</div>
-          <a href="https://www.instagram.com/p/DfFMEQWlOO1/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/DfFMEQWlOO1/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/ghost_of_tsushima___saka_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/hollow_knight___hallowne_preview.jpg" alt="Hollow Knight & Hallownest Map Telemetry">
+      <div class="archive-item" data-title="hollow knight & hallownest map telemetry">
+        <a href="assets/hollow_knight___hallowne_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/hollow_knight___hallowne_preview.jpg" alt="Hollow Knight & Hallownest Map Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Hollow Knight & Hallownest Map Telemetry</div>
-          <a href="https://www.instagram.com/p/De_ZbBflJUL/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De_ZbBflJUL/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/hollow_knight___hallowne_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/portal___aperture_scienc_preview.jpg" alt="Portal & Aperture Science Blueprints">
+      <div class="archive-item" data-title="portal & aperture science blueprints">
+        <a href="assets/portal___aperture_scienc_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/portal___aperture_scienc_preview.jpg" alt="Portal & Aperture Science Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Portal & Aperture Science Blueprints</div>
-          <a href="https://www.instagram.com/p/De90ZlCknK6/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De90ZlCknK6/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/portal___aperture_scienc_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/assassin_s_creed___animu_preview.jpg" alt="Assassin's Creed & Animus Genetic Memory">
+      <div class="archive-item" data-title="assassin's creed & animus genetic memory">
+        <a href="assets/assassin_s_creed___animu_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/assassin_s_creed___animu_preview.jpg" alt="Assassin's Creed & Animus Genetic Memory" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Assassin's Creed & Animus Genetic Memory</div>
-          <a href="https://www.instagram.com/p/De80hqflH-o/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De80hqflH-o/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/assassin_s_creed___animu_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/metal_gear_solid___tacti_preview.jpg" alt="Metal Gear Solid & Tactical Espionage Telemetry">
+      <div class="archive-item" data-title="metal gear solid & tactical espionage telemetry">
+        <a href="assets/metal_gear_solid___tacti_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/metal_gear_solid___tacti_preview.jpg" alt="Metal Gear Solid & Tactical Espionage Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Metal Gear Solid & Tactical Espionage Telemetry</div>
-          <a href="https://www.instagram.com/p/De7h3GOk_Tq/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De7h3GOk_Tq/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/metal_gear_solid___tacti_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/half_life___black_mesa_r_preview.jpg" alt="Half-Life & Black Mesa Research Facility">
+      <div class="archive-item" data-title="half-life & black mesa research facility">
+        <a href="assets/half_life___black_mesa_r_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/half_life___black_mesa_r_preview.jpg" alt="Half-Life & Black Mesa Research Facility" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Half-Life & Black Mesa Research Facility</div>
-          <a href="https://www.instagram.com/p/De6PaIqFKb2/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De6PaIqFKb2/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/half_life___black_mesa_r_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/bloodborne___yharnam_hun_preview.jpg" alt="Bloodborne & Yharnam Hunter Telemetry">
+      <div class="archive-item" data-title="bloodborne & yharnam hunter telemetry">
+        <a href="assets/bloodborne___yharnam_hun_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/bloodborne___yharnam_hun_preview.jpg" alt="Bloodborne & Yharnam Hunter Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Bloodborne & Yharnam Hunter Telemetry</div>
-          <a href="https://www.instagram.com/p/De3qC_gFBCI/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De3qC_gFBCI/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/bloodborne___yharnam_hun_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/resident_evil___umbrella_preview.jpg" alt="Resident Evil & Umbrella Biohazard Blueprints">
+      <div class="archive-item" data-title="resident evil & umbrella biohazard blueprints">
+        <a href="assets/resident_evil___umbrella_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/resident_evil___umbrella_preview.jpg" alt="Resident Evil & Umbrella Biohazard Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Resident Evil & Umbrella Biohazard Blueprints</div>
-          <a href="https://www.instagram.com/p/De3mgk3lMsp/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De3mgk3lMsp/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/resident_evil___umbrella_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/bioshock___rapture_under_preview.jpg" alt="BioShock & Rapture Underwater Blueprints">
+      <div class="archive-item" data-title="bioshock & rapture underwater blueprints">
+        <a href="assets/bioshock___rapture_under_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/bioshock___rapture_under_preview.jpg" alt="BioShock & Rapture Underwater Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">BioShock & Rapture Underwater Blueprints</div>
-          <a href="https://www.instagram.com/p/De3i86zkaKC/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De3i86zkaKC/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/bioshock___rapture_under_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/metroid___samus_aran_pow_preview.jpg" alt="Metroid & Samus Aran Power Suit Blueprints">
+      <div class="archive-item" data-title="metroid & samus aran power suit blueprints">
+        <a href="assets/metroid___samus_aran_pow_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/metroid___samus_aran_pow_preview.jpg" alt="Metroid & Samus Aran Power Suit Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Metroid & Samus Aran Power Suit Blueprints</div>
-          <a href="https://www.instagram.com/p/De2sCpHEpoZ/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2sCpHEpoZ/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/metroid___samus_aran_pow_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/fallout___the_wasteland__preview.jpg" alt="Fallout & The Wasteland Vault-Tec Blueprints">
+      <div class="archive-item" data-title="fallout & the wasteland vault-tec blueprints">
+        <a href="assets/fallout___the_wasteland__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/fallout___the_wasteland__preview.jpg" alt="Fallout & The Wasteland Vault-Tec Blueprints" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Fallout & The Wasteland Vault-Tec Blueprints</div>
-          <a href="https://www.instagram.com/p/De2oZvhEqpO/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2oZvhEqpO/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/fallout___the_wasteland__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/red_dead_redemption_2____preview.jpg" alt="Red Dead Redemption 2 & Van der Linde Gang">
+      <div class="archive-item" data-title="red dead redemption 2 & van der linde gang">
+        <a href="assets/red_dead_redemption_2____preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/red_dead_redemption_2____preview.jpg" alt="Red Dead Redemption 2 & Van der Linde Gang" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Red Dead Redemption 2 & Van der Linde Gang</div>
-          <a href="https://www.instagram.com/p/De2ksHVE8dF/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2ksHVE8dF/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/red_dead_redemption_2____preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/dark_souls___the_age_of__preview.jpg" alt="Dark Souls & The Age of Fire">
+      <div class="archive-item" data-title="dark souls & the age of fire">
+        <a href="assets/dark_souls___the_age_of__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/dark_souls___the_age_of__preview.jpg" alt="Dark Souls & The Age of Fire" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Dark Souls & The Age of Fire</div>
-          <a href="https://www.instagram.com/p/De2g8g-kyvC/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2g8g-kyvC/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/dark_souls___the_age_of__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/mass_effect___normandy_s_preview.jpg" alt="Mass Effect & Normandy SR-2 Telemetry">
+      <div class="archive-item" data-title="mass effect & normandy sr-2 telemetry">
+        <a href="assets/mass_effect___normandy_s_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/mass_effect___normandy_s_preview.jpg" alt="Mass Effect & Normandy SR-2 Telemetry" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Mass Effect & Normandy SR-2 Telemetry</div>
-          <a href="https://www.instagram.com/p/De2dTDwE0L1/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2dTDwE0L1/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/mass_effect___normandy_s_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/doom_eternal___the_doom__preview.jpg" alt="Doom Eternal & The Doom Slayer">
+      <div class="archive-item" data-title="doom eternal & the doom slayer">
+        <a href="assets/doom_eternal___the_doom__preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/doom_eternal___the_doom__preview.jpg" alt="Doom Eternal & The Doom Slayer" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Doom Eternal & The Doom Slayer</div>
-          <a href="https://www.instagram.com/p/De2ZpDnE2wB/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2ZpDnE2wB/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/doom_eternal___the_doom__preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/the_elder_scrolls_v__sky_preview.jpg" alt="The Elder Scrolls V: Skyrim & Dragon Shouts">
+      <div class="archive-item" data-title="the elder scrolls v: skyrim & dragon shouts">
+        <a href="assets/the_elder_scrolls_v__sky_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/the_elder_scrolls_v__sky_preview.jpg" alt="The Elder Scrolls V: Skyrim & Dragon Shouts" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">The Elder Scrolls V: Skyrim & Dragon Shouts</div>
-          <a href="https://www.instagram.com/p/De2BfOuEjzD/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De2BfOuEjzD/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/the_elder_scrolls_v__sky_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/god_of_war_ragnarök___th_preview.jpg" alt="God of War Ragnarök & The Nine Realms">
+      <div class="archive-item" data-title="god of war ragnarök & the nine realms">
+        <a href="assets/god_of_war_ragnarök___th_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/god_of_war_ragnarök___th_preview.jpg" alt="God of War Ragnarök & The Nine Realms" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">God of War Ragnarök & The Nine Realms</div>
-          <a href="https://www.instagram.com/p/De190ZIEsao/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De190ZIEsao/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/god_of_war_ragnarök___th_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/the_witcher_3___the_cont_preview.jpg" alt="The Witcher 3 & The Continent">
+      <div class="archive-item" data-title="the witcher 3 & the continent">
+        <a href="assets/the_witcher_3___the_cont_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/the_witcher_3___the_cont_preview.jpg" alt="The Witcher 3 & The Continent" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">The Witcher 3 & The Continent</div>
-          <a href="https://www.instagram.com/p/De16H6Ekrnu/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De16H6Ekrnu/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/the_witcher_3___the_cont_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/history___evolution_of_v_preview.jpg" alt="History & Evolution of Video Games">
+      <div class="archive-item" data-title="history & evolution of video games">
+        <a href="assets/history___evolution_of_v_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/history___evolution_of_v_preview.jpg" alt="History & Evolution of Video Games" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">History & Evolution of Video Games</div>
-          <a href="https://www.instagram.com/p/De12jSkEmyx/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De12jSkEmyx/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/history___evolution_of_v_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/halo___master_chief_mjol_preview.jpg" alt="Halo & Master Chief MJOLNIR Specs">
+      <div class="archive-item" data-title="halo & master chief mjolnir specs">
+        <a href="assets/halo___master_chief_mjol_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/halo___master_chief_mjol_preview.jpg" alt="Halo & Master Chief MJOLNIR Specs" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Halo & Master Chief MJOLNIR Specs</div>
-          <a href="https://www.instagram.com/p/De1ymaelK8O/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De1ymaelK8O/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/halo___master_chief_mjol_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/cyberpunk_2077___night_c_preview.jpg" alt="Cyberpunk 2077 & Night City">
+      <div class="archive-item" data-title="cyberpunk 2077 & night city">
+        <a href="assets/cyberpunk_2077___night_c_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/cyberpunk_2077___night_c_preview.jpg" alt="Cyberpunk 2077 & Night City" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Cyberpunk 2077 & Night City</div>
-          <a href="https://www.instagram.com/p/De1uqWPFNY6/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De1uqWPFNY6/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/cyberpunk_2077___night_c_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/elden_ring___the_lands_b_preview.jpg" alt="Elden Ring & The Lands Between">
+      <div class="archive-item" data-title="elden ring & the lands between">
+        <a href="assets/elden_ring___the_lands_b_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/elden_ring___the_lands_b_preview.jpg" alt="Elden Ring & The Lands Between" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">Elden Ring & The Lands Between</div>
-          <a href="https://www.instagram.com/p/De1XIF8lIki/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De1XIF8lIki/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/elden_ring___the_lands_b_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
-      <div class="archive-item">
-        <img src="assets/zelda_preview.jpg" alt="The Legend of Zelda Franchise">
+      <div class="archive-item" data-title="the legend of zelda franchise">
+        <a href="assets/zelda_preview.jpg" target="_blank" rel="noopener noreferrer" title="View Full Wallpaper">
+          <img src="assets/zelda_preview.jpg" alt="The Legend of Zelda Franchise" loading="lazy">
+        </a>
         <div class="archive-info">
           <div class="archive-title">The Legend of Zelda Franchise</div>
-          <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="archive-link">View Carousel →</a>
+          <div class="archive-actions">
+            <a href="https://www.instagram.com/p/De1Rav9lBP9/" target="_blank" rel="noopener noreferrer" class="archive-link">View on IG →</a>
+            <span class="sep">•</span>
+            <a href="assets/zelda_preview.jpg" download class="archive-download">Free 4K Wallpaper ↓</a>
+          </div>
         </div>
       </div>
       </div>
     </div>
 
     <footer>
-      © 2026 Infographic Gamer. Editorial tributes & schematics.<br>
-      All game rights belong to their respective publishers.
+      © 2026 Infographic Gamer. Editorial tributes & technical schematics.<br>
+      All video game trademarks belong to their respective publishers.
     </footer>
 
   </div>
+
+  <script>
+    // ─── COMMUNITY VOTING ENGINE ───
+    const defaultVotes = [504, 430, 311, 237];
+    let currentVotes = JSON.parse(localStorage.getItem('ig_community_votes') || 'null') || defaultVotes;
+    let userVoted = localStorage.getItem('ig_user_has_voted');
+
+    function updateVoteUI() {
+      const total = currentVotes.reduce((a, b) => a + b, 0);
+      document.getElementById('voteTotal').innerText = total.toLocaleString() + ' Votes Cast';
+      for (let i = 0; i < 4; i++) {
+        const pct = Math.round((currentVotes[i] / total) * 100);
+        document.getElementById('vp' + i).innerText = pct + '%';
+        document.getElementById('vbar' + i).style.width = pct + '%';
+      }
+      if (userVoted !== null) {
+        const options = document.querySelectorAll('.vote-option');
+        if (options[userVoted]) options[userVoted].classList.add('voted');
+        document.getElementById('voteFeedback').style.display = 'block';
+      }
+    }
+
+    function castVote(optionIndex) {
+      if (userVoted !== null) return;
+      currentVotes[optionIndex]++;
+      userVoted = optionIndex;
+      localStorage.setItem('ig_community_votes', JSON.stringify(currentVotes));
+      localStorage.setItem('ig_user_has_voted', userVoted);
+      updateVoteUI();
+    }
+    updateVoteUI();
+
+    // ─── ARCHIVE REAL-TIME FILTER ───
+    function filterArchive() {
+      const query = document.getElementById('archiveSearch').value.toLowerCase().trim();
+      const items = document.querySelectorAll('.archive-item');
+      let visible = 0;
+      items.forEach(item => {
+        const title = item.getAttribute('data-title') || '';
+        if (!query || title.includes(query)) {
+          item.style.display = 'flex';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      document.getElementById('matchCount').innerText = visible;
+    }
+  </script>
 </body>
 </html>
